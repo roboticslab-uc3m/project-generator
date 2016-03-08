@@ -26,3 +26,10 @@ cp $SCRIPT_DIR/CMakeLists.txt .
 sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" CMakeLists.txt
 sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" CMakeLists.txt
 sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" CMakeLists.txt
+
+cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfig.cmake.in "cmake/template/"$PROJECT_NAME"Config.cmake.in"
+sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" "cmake/template/"$PROJECT_NAME"Config.cmake.in"
+
+cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"
+# sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"  #-- Not needed
+
