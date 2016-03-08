@@ -7,6 +7,8 @@ PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
 echo Project name \(as in PROJECT_STRUCTURE\)?
 read PROJECT_NAME
+echo Project name \(as in project-structure\)?
+read PROJECT_LOWER
 echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
@@ -23,13 +25,19 @@ mkdir -p cmake/template
 mkdir -p scripts/admin scripts/gnome
 
 cp $SCRIPT_DIR/CMakeLists.txt .
-sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" CMakeLists.txt
-sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" CMakeLists.txt
-sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" CMakeLists.txt
 
 cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfig.cmake.in "cmake/template/"$PROJECT_NAME"Config.cmake.in"
-sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" "cmake/template/"$PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"
-# sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"  #-- Not needed
+
+cp $SCRIPT_DIR/libraries/CMakeLists.txt libraries
+
+cp $SCRIPT_DIR/programs/CMakeLists.txt programs
+
+cp $SCRIPT_DIR/share/CMakeLists.txt share
+
+find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
 
