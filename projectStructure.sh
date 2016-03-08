@@ -41,6 +41,8 @@ cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
 cp $SCRIPT_DIR/share/* share
 
+cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
+
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
