@@ -5,10 +5,9 @@
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
-echo Project name \(as in PROJECT_STRUCTURE\)?
-read PROJECT_NAME
 echo Project name \(as in project-structure\)?
 read PROJECT_LOWER
+PROJECT_NAME=$( echo "$PROJECT_LOWER" | gawk '{print toupper($0)}' | sed 's/-/_/g')
 echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
