@@ -2,13 +2,15 @@
 
 # generateProjectStructure.sh: A simple shell script for generating a project structure
 
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
-echo Project name?
+echo Project name \(as in PROJECT_STRUCTURE\)?
 read PROJECT_NAME
 echo Project description?
 read PROJECT_DESCRIPTION
-echo Maintainer?
-read PROJECT_MAINTAINER
+echo AUTHOR?
+read PROJECT_AUTHOR
 echo Installation directory "["${KEPT_DIR}"]"?
 read INSTALL_DIR
 if [ -z "$INSTALL_DIR" ]; then
@@ -20,6 +22,7 @@ mkdir -p cmake doc example extern firmware libraries programs scripts share
 mkdir -p cmake/template
 mkdir -p scripts/admin scripts/gnome
 
-# --- BEGIN: Creating INSTALL ---
-# --- END: Creating INSTALL ---
-
+cp $SCRIPT_DIR/CMakeLists.txt .
+sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" CMakeLists.txt
+sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" CMakeLists.txt
+sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" CMakeLists.txt
