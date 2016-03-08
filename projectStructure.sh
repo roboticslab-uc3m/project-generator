@@ -23,6 +23,7 @@ cd $INSTALL_DIR
 mkdir -p cmake doc example extern firmware libraries programs scripts share
 mkdir -p cmake/template
 mkdir -p scripts/admin scripts/gnome
+mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
 
@@ -32,7 +33,11 @@ cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in "cmake/templ
 
 cp $SCRIPT_DIR/libraries/CMakeLists.txt libraries
 
+cp $SCRIPT_DIR/libraries/ExampleLibrary/* libraries/ExampleLibrary
+
 cp $SCRIPT_DIR/programs/CMakeLists.txt programs
+
+cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
 cp $SCRIPT_DIR/share/CMakeLists.txt share
 

@@ -14,13 +14,13 @@ endif(COMMAND cmake_policy)
 project(TEMPLATE_NAME)
 
 ### options: cpp libraries
-option(ENABLE_lib "Choose if you want to compile lib" TRUE)
+option(ENABLE_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
 
 ### options: cpp programs
-option(ENABLE_prog "Choose if you want to compile prog" TRUE)
+option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
 
 ### options: force default
-option(ENABLE_lib_opt "Enable/disable option lib_opt" TRUE)
+option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE)
 
 if(MSVC)
   MESSAGE(STATUS "Running on windows")    
