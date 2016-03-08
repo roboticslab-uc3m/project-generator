@@ -46,3 +46,5 @@ find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
 
+echo $PROJECT_DESCRIPTION >> README.md
+
