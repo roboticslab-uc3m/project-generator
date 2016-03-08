@@ -39,7 +39,7 @@ cp $SCRIPT_DIR/programs/CMakeLists.txt programs
 
 cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
-cp $SCRIPT_DIR/share/CMakeLists.txt share
+cp $SCRIPT_DIR/share/* share
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
