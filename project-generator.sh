@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# generateProjectStructure.sh: A simple shell script for generating a project structure
+# project-generator.sh: A simple shell script for generating a project structure
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
-echo Project name \(as in project-structure\)?
+echo Project name \(as in project-generator\)?
 read PROJECT_LOWER
 PROJECT_NAME=$( echo "$PROJECT_LOWER" | gawk '{print toupper($0)}' | sed 's/-/_/g')
 echo Project description?
