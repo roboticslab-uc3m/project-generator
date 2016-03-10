@@ -1,4 +1,4 @@
-# projectStructure
+# project-generator
 
 Project structure and file generation, using templates and user CLI input.
 
