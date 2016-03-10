@@ -30,6 +30,8 @@ cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfig.cmake.in "cmake/template/"$PRO
 
 cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"
 
+cp $SCRIPT_DIR/doc/* doc
+
 cp $SCRIPT_DIR/libraries/CMakeLists.txt libraries
 
 cp $SCRIPT_DIR/libraries/ExampleLibrary/* libraries/ExampleLibrary
