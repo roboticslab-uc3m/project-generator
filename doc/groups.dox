@@ -1,0 +1,33 @@
+
+/**
+@brief The main, catch-all namespace for TEO.
+ */
+namespace teo {}
+
+/**
+ * \defgroup TEMPLATE_LOWER_libraries TEMPLATE_LOWER Libraries
+ *
+ * @brief TEMPLATE_LOWER libraries.
+ *
+ */
+
+/**
+ * \defgroup TEMPLATE_LOWER_programs TEMPLATE_LOWER Programs
+ *
+ * @brief TEMPLATE_LOWER programs.
+ */
+
+/**
+ * \defgroup TEMPLATE_LOWER_applications TEMPLATE_LOWER Applications (Collections of Programs)
+ *
+ * @brief TEMPLATE_LOWER applications (collections of programs).
+ */
+
+/**
+ * \defgroup TEMPLATE_LOWER_examples TEMPLATE_LOWER Examples
+ *
+ * @brief TEMPLATE_LOWER examples.
+ */
+
+
+
