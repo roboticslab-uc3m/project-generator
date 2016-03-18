@@ -7,7 +7,8 @@ PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
 echo Project name \(as in project-generator\)?
 read PROJECT_LOWER
-PROJECT_NAME=$( echo "$PROJECT_LOWER" | gawk '{print toupper($0)}' | sed 's/-/_/g')
+echo Project name \(as in PROJECT_GENERATOR\)?
+read PROJECT_NAME
 echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
@@ -17,7 +18,7 @@ read INSTALL_DIR
 if [ -z "$INSTALL_DIR" ]; then
 	INSTALL_DIR=$KEPT_DIR
 fi
-echo Creating folder structure for project in \"$INSTALL_DIR\"...
+echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
 cd $INSTALL_DIR
 mkdir -p cmake doc example extern firmware libraries programs scripts share
 mkdir -p cmake/template
