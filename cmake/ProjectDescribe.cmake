@@ -12,7 +12,7 @@ set(TEMPLATE_NAME_INSTALL_INCLUDE_DIRS ${CMAKE_INSTALL_FULL_DATADIR}/TEMPLATE_LO
 include(InstallBasicPackageFiles)
 
 install_basic_package_files(TEMPLATE_NAME
-                            VERSION 0.1.0
+                            VERSION ${TEMPLATE_NAME_VERSION_SHORT}
                             COMPATIBILITY AnyNewerVersion
                             TARGETS_PROPERTY TEMPLATE_NAME_TARGETS
                             NO_CHECK_REQUIRED_COMPONENTS_MACRO

@@ -15,6 +15,7 @@ list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
 
 include(YCMBootstrap)
 
+include(TEMPLATE_PASCALVersion)
 include(TEMPLATE_PASCALOptions)
 include(TEMPLATE_PASCALSystem)
 

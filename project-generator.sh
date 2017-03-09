@@ -41,6 +41,8 @@ cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
 
 cp $SCRIPT_DIR/cmake/ProjectSystem.cmake "cmake/"$PROJECT_PASCAL"System.cmake"
 
+cp $SCRIPT_DIR/cmake/ProjectVersion.cmake "cmake/"$PROJECT_PASCAL"Version.cmake"
+
 cp $SCRIPT_DIR/doc/* doc
 
 cp $SCRIPT_DIR/libraries/CMakeLists.txt libraries
