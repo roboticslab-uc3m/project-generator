@@ -12,11 +12,6 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfig.cmake.in
 ##  "${CMAKE_COMMAND}" -E "remove_directory" "${CMAKE_SOURCE_DIR}/bin" ";"
 ##  "${CMAKE_COMMAND}" -E "remove_directory" "${CMAKE_SOURCE_DIR}/lib")
 
-# uninstall target
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/TEMPLATE_NAMEConfigUninstall.cmake" IMMEDIATE @ONLY)
-
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/TEMPLATE_NAMEConfigUninstall.cmake)
+# configure and create uninstall target
+include(AddUninstallTarget)
 
