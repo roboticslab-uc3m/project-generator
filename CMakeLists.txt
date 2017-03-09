@@ -2,14 +2,7 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the GNU GPL v2.0.
 
-# Exploit new cmake 2.6 features (export). 
-
-# reduce warning level with cmake 2.6
-cmake_minimum_required(VERSION 2.6)
-#cmake policies
-if(COMMAND cmake_policy)
-  cmake_policy(SET CMP0003 NEW)
-endif(COMMAND cmake_policy)
+cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 
 project(TEMPLATE_NAME)
 
@@ -19,6 +12,8 @@ project(TEMPLATE_NAME)
 set(TEMPLATE_NAME_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # let cmake use them
 list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
+
+include(YCMBootstrap)
 
 include(TEMPLATE_PASCALOptions)
 include(TEMPLATE_PASCALSystem)

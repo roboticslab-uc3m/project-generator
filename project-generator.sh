@@ -29,6 +29,10 @@ mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
 
+cp $SCRIPT_DIR/cmake/IncludeUrl.cmake cmake
+
+cp $SCRIPT_DIR/cmake/YCMBootstrap.cmake cmake
+
 cp $SCRIPT_DIR/cmake/ProjectDescribe.cmake "cmake/"$PROJECT_PASCAL"Describe.cmake"
 
 cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
