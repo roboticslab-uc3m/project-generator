@@ -7,6 +7,10 @@ option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE
 ### options: force default
 option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE)
 
+# Register features.
+add_feature_info(ExampleLibrary ENABLE_ExampleLibrary "Fancy example library.")
+add_feature_info(exampleProgram ENABLE_exampleProgram "Fancy example program.")
+
 # Let the user specify a configuration (only single-config generators).
 if(NOT CMAKE_CONFIGURATION_TYPES)
   # Possible values.

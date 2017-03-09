@@ -42,3 +42,6 @@ include(TEMPLATE_PASCALDoc)
 # Invoke CPack from here.
 include(TEMPLATE_PASCALPackage)
 
+# Generate a report of enabled/disabled features.
+feature_summary(FATAL_ON_MISSING_REQUIRED_PACKAGES WHAT ALL)
+

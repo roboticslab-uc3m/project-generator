@@ -1,3 +1,6 @@
+# Enable calls to set_package_properties() and add_feature_info().
+include(FeatureSummary)
+
 # Standard installation directories.
 include(GNUInstallDirs)
 
