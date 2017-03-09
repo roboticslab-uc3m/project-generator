@@ -59,9 +59,11 @@ cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
 cp $SCRIPT_DIR/share/* share
 
-cp $SCRIPT_DIR/scripts/admin/update-dox.sh scripts/admin
+cp $SCRIPT_DIR/scripts/admin/* scripts/admin
 
 cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
+
+cp $SCRIPT_DIR/scripts/package/* scripts/package
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
