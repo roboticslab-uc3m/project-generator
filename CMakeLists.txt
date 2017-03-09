@@ -39,3 +39,6 @@ include(TEMPLATE_PASCALDescribe)
 # Create target for documentation generation.
 include(TEMPLATE_PASCALDoc)
 
+# Invoke CPack from here.
+include(TEMPLATE_PASCALPackage)
+
