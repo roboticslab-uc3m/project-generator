@@ -29,6 +29,12 @@ mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
 
+cp $SCRIPT_DIR/cmake/ProjectDescribe.cmake "cmake/"$PROJECT_PASCAL"Describe.cmake"
+
+cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
+
+cp $SCRIPT_DIR/cmake/ProjectSystem.cmake "cmake/"$PROJECT_PASCAL"System.cmake"
+
 cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfig.cmake.in "cmake/template/"$PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in "cmake/template/"$PROJECT_NAME"ConfigUninstall.cmake.in"

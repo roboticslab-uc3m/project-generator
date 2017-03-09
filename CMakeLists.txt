@@ -13,50 +13,15 @@ endif(COMMAND cmake_policy)
 
 project(TEMPLATE_NAME)
 
-### options: cpp libraries
-option(ENABLE_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
-
-### options: cpp programs
-option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
-
-### options: force default
-option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE)
-
-if(MSVC)
-  MESSAGE(STATUS "Running on windows")    
-  set(CMAKE_DEBUG_POSTFIX "d")
-endif(MSVC)
-
-if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE "Release" CACHE STRING 
-    "Choose the type of build, recommanded options are: Debug or Release")
-endif(NOT CMAKE_BUILD_TYPE)
-# Hide variable to MSVC users, since it is not needed
-if (MSVC)
-   mark_as_advanced(CMAKE_BUILD_TYPE)
-endif(MSVC)
-
 ######################
-
-### this makes everything go in $TEMPLATE_NAME_DIR/lib and $TEMPLATE_NAME_DIR/bin
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
-message(STATUS "Libraries go to ${LIBRARY_OUTPUT_PATH}")
-message(STATUS "Executables go to ${EXECUTABLE_OUTPUT_PATH}")
-# this doesn't happen automatically for makefiles
-make_directory(${LIBRARY_OUTPUT_PATH})
-make_directory(${EXECUTABLE_OUTPUT_PATH})
-# and let us clean their contents on a "make clean"
-##set_directory_properties(PROPERTIES LIBRARY_OUTPUT_PATH ADDITIONAL_MAKE_CLEAN_FILES)
-##set_directory_properties(PROPERTIES EXECUTABLE_OUTPUT_PATH ADDITIONAL_MAKE_CLEAN_FILES)
-mark_as_advanced(LIBRARY_OUTPUT_PATH EXECUTABLE_OUTPUT_PATH)
-mark_as_advanced(CMAKE_BACKWARDS_COMPATIBILITY)
-##########################################
 
 # Pick up our cmake modules - they are all in the cmake subdirectory
 set(TEMPLATE_NAME_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # let cmake use them
 list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
+
+include(TEMPLATE_PASCALOptions)
+include(TEMPLATE_PASCALSystem)
 
 set(TEMPLATE_NAME_INCLUDE_DIRS CACHE INTERNAL "appended header dirs" FORCE)
 set(TEMPLATE_NAME_LINK_DIRS CACHE INTERNAL "appended link dirs" FORCE)
@@ -67,25 +32,5 @@ add_subdirectory(share)
 add_subdirectory(libraries)
 add_subdirectory(programs)
 
-# export our variables to a TEMPLATE_NAMEConfig.cmake creation
-set(TEMPLATE_NAME_LINK_DIRS ${TEMPLATE_NAME_LINK_DIRS} ${LIBRARY_OUTPUT_PATH})
-configure_file(${CMAKE_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfig.cmake.in
-               ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake @ONLY)
-
-# create a symbolic link to the shared directory (as contains models and may be heavy)
-# If you want a deep copy, you can use the copy_directory command instead of create_symlink.
-#add_custom_target(install_applications COMMAND ${CMAKE_COMMAND} -E create_symlink ${CMAKE_SOURCE_DIR}/share ${CMAKE_SOURCE_DIR}/../share)
-
-#endif(MSVC)
-##add_custom_target(nuke
-##  "${CMAKE_COMMAND}" -E "remove_directory" "${CMAKE_SOURCE_DIR}/bin" ";"
-##  "${CMAKE_COMMAND}" -E "remove_directory" "${CMAKE_SOURCE_DIR}/lib")
-
-# uninstall target
-configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfigUninstall.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/TEMPLATE_NAMEConfigUninstall.cmake" IMMEDIATE @ONLY)
-
-add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/TEMPLATE_NAMEConfigUninstall.cmake)
+include(TEMPLATE_PASCALDescribe)
 
