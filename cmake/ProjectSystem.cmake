@@ -12,3 +12,6 @@ if(MSVC)
   set(CMAKE_DEBUG_POSTFIX "d")
 endif()
 
+# Install system runtime libraries.
+include(InstallRequiredSystemLibraries)
+

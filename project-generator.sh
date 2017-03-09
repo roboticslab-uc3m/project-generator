@@ -41,6 +41,8 @@ cp $SCRIPT_DIR/cmake/ProjectDoc.cmake "cmake/"$PROJECT_PASCAL"Doc.cmake"
 
 cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
 
+cp $SCRIPT_DIR/cmake/ProjectPackage.cmake "cmake/"$PROJECT_PASCAL"Package.cmake"
+
 cp $SCRIPT_DIR/cmake/ProjectSystem.cmake "cmake/"$PROJECT_PASCAL"System.cmake"
 
 cp $SCRIPT_DIR/cmake/ProjectVersion.cmake "cmake/"$PROJECT_PASCAL"Version.cmake"
@@ -57,15 +59,18 @@ cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
 cp $SCRIPT_DIR/share/* share
 
-cp $SCRIPT_DIR/scripts/admin/update-dox.sh scripts/admin
+cp $SCRIPT_DIR/scripts/admin/* scripts/admin
 
 cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
+
+cp $SCRIPT_DIR/scripts/package/* scripts/package
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_PASCAL/$PROJECT_PASCAL/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_DESCRIPTION/$PROJECT_DESCRIPTION/g" {} +
 
 echo $PROJECT_DESCRIPTION >> README.md
 

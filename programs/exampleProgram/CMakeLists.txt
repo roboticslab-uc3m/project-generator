@@ -21,5 +21,7 @@ add_library(${KEYWORD} main.cpp ExampleProgram.cpp Exampleprogram.hpp)
 target_link_libraries(${KEYWORD} ${YARP_LIBRARIES} ${TEMPLATE_NAME_LIBRARIES})
 
 # Create installation rule.
-install(TARGETS ${_example_target} DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS ${_example_target}
+        DESTINATION ${CMAKE_INSTALL_BINDIR}
+        COMPONENT example_program)
 
