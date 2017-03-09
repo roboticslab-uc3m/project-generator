@@ -1,3 +1,7 @@
+# Copyright: Universidad Carlos III de Madrid (C) TEMPLATE_YEAR
+# Authors: TEMPLATE_AUTHOR
+# CopyPolicy: Released under the terms of the GNU GPL v2.0.
+
 set(KEYWORD "exampleProgram")
 
 # Find YARP.

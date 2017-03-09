@@ -1,4 +1,4 @@
-include(GitInfo)
+include(GitInfo) # YCM
 
 # Define current version.
 set(TEMPLATE_NAME_VERSION_MAJOR 0)

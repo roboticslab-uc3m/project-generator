@@ -9,10 +9,11 @@ option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release" CACHE STRING 
-    "Choose the type of build, recommanded options are: Debug or Release")
-endif(NOT CMAKE_BUILD_TYPE)
+     "Choose the type of build, recommanded options are: Debug or Release")
+endif()
+
 # Hide variable to MSVC users, since it is not needed
-if (MSVC)
-   mark_as_advanced(CMAKE_BUILD_TYPE)
-endif(MSVC)
+if(MSVC)
+  mark_as_advanced(CMAKE_BUILD_TYPE)
+endif()
 

@@ -6,10 +6,11 @@ get_property(TEMPLATE_NAME_INCLUDE_DIRS GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DI
 get_property(TEMPLATE_NAME_LIBRARIES GLOBAL PROPERTY TEMPLATE_NAME_LIBRARIES)
 get_property(TEMPLATE_NAME_TARGETS GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
 
+# Set build/install pairs of paths for each exported property.
 set(TEMPLATE_NAME_BUILD_INCLUDE_DIRS ${TEMPLATE_NAME_INCLUDE_DIRS})
 set(TEMPLATE_NAME_INSTALL_INCLUDE_DIRS ${CMAKE_INSTALL_FULL_DATADIR}/TEMPLATE_LOWER/cmake)
 
-# Create and install config and version files.
+# Create and install config and version files (YCM).
 include(InstallBasicPackageFiles)
 
 install_basic_package_files(TEMPLATE_NAME
@@ -19,6 +20,6 @@ install_basic_package_files(TEMPLATE_NAME
                             NO_CHECK_REQUIRED_COMPONENTS_MACRO
                             EXTRA_PATH_VARS_SUFFIX INCLUDE_DIRS)
 
-# Configure and create uninstall target.
+# Configure and create uninstall target (YCM).
 include(AddUninstallTarget)
 

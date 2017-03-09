@@ -8,7 +8,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 
 # Add "d" postfix to debug libraries on Windows.
 if(MSVC)
-  MESSAGE(STATUS "Running on windows")    
+  message(STATUS "Running on windows")    
   set(CMAKE_DEBUG_POSTFIX "d")
-endif(MSVC)
+endif()
 
