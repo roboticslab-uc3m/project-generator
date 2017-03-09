@@ -31,7 +31,15 @@ cp $SCRIPT_DIR/CMakeLists.txt .
 
 cp $SCRIPT_DIR/TEMPLATE_NAMEConfig.cmake.in $PROJECT_NAME"Config.cmake.in"
 
-cp $SCRIPT_DIR/cmake/* cmake
+cp $SCRIPT_DIR/cmake/IncludeUrl.cmake cmake
+
+cp $SCRIPT_DIR/cmake/YCMBootstrap.cmake cmake
+
+cp $SCRIPT_DIR/cmake/ProjectDescribe.cmake "cmake/"$PROJECT_PASCAL"Describe.cmake"
+
+cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
+
+cp $SCRIPT_DIR/cmake/ProjectSystem.cmake "cmake/"$PROJECT_PASCAL"System.cmake"
 
 cp $SCRIPT_DIR/doc/* doc
 
