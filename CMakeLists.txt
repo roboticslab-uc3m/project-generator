@@ -36,3 +36,6 @@ add_subdirectory(programs)
 # Output configuration files.
 include(TEMPLATE_PASCALDescribe)
 
+# Create target for documentation generation.
+include(TEMPLATE_PASCALDoc)
+
