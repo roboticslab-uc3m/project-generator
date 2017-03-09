@@ -18,11 +18,13 @@ target_link_libraries(${KEYWORD} LINK_PRIVATE ${YARP_LIBRARIES})
 
 # Create installation rule.
 install(TARGETS ${KEYWORD}
+        EXPORT TEMPLATE_NAME
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-# Export library name, store include paths in target.
+# Export library name and current target. Store include paths in target.
 set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_LIBRARIES ${KEYWORD})
+set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_TARGETS ${KEYWORD})
 set_property(TARGET ${KEYWORD} PROPERTY INCLUDE_DIRS ${TEMPLATE_NAME_INCLUDE_DIRS})
 
