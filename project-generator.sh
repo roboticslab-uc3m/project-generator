@@ -5,10 +5,12 @@
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 PROJECT_YEAR=`date +"%Y"`
 KEPT_DIR=$PWD
-echo Project name \(as in project-generator\)?
-read PROJECT_LOWER
 echo Project name \(as in PROJECT_GENERATOR\)?
 read PROJECT_NAME
+PROJECT_LOWER="$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/_/-/')"
+echo "Project lower case name with dashes: $PROJECT_LOWER"
+PROJECT_PASCAL="$(echo "$PROJECT_LOWER" | sed -r 's/(^|-)([a-z])/\U\2/g')"
+echo "Project upper pascal case name: $PROJECT_PASCAL"
 echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
@@ -49,6 +51,7 @@ cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOW
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_PASCAL/$PROJECT_PASCAL/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
 
