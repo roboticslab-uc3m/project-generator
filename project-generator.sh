@@ -21,10 +21,10 @@ if [ -z "$INSTALL_DIR" ]; then
 	INSTALL_DIR=$KEPT_DIR
 fi
 echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
+mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 mkdir -p cmake doc example extern firmware libraries programs scripts share
-mkdir -p cmake/template
-mkdir -p scripts/admin scripts/gnome
+mkdir -p scripts/admin scripts/gnome scripts/package
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
