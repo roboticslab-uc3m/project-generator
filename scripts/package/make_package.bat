@@ -36,6 +36,8 @@ echo Configuring CMake...
 cmake .. -G %1 ^
          -DENABLE_ExampleLibrary:BOOL=ON ^
          -DENABLE_exampleProgram:BOOL=ON ^
+         -DTEMPLATE_NAME_DOXYGEN_HTML:BOOL=ON ^
+         -DCPACK_BINARY_NSIS:BOOL=ON ^
  || (
     echo Errors during CMake configuration, exiting...
     exit /B 1
