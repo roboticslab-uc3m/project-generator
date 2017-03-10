@@ -3,17 +3,25 @@ os: linux
 compiler: gcc
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install cmake doxygen
+  - sudo apt-get install doxygen
+  - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
+  - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
 
 install:
   - git clone https://github.com/kitware/cmake
   - cd cmake
+  - git checkout tags/v2.8.9
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
   - make
-  - cd ../..
+  - sudo make install
+  - cmake --version # FIXME remove this
 
 before_script:
+  - cd $TRAVIS_BUILD_DIR
   - ./project-generator.sh < test_program_answers.txt
+  - cd $(tail -n 1 test_program_answers.txt)
+
+script:
+  - scripts/package/make_package.sh
