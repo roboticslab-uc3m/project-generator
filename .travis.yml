@@ -1,0 +1,19 @@
+language: cpp
+os: linux
+compiler: gcc
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install cmake doxygen
+
+install:
+  - git clone https://github.com/kitware/cmake
+  - cd cmake
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+  - cd ../..
+
+before_script:
+  - ./project-generator.sh < test_program_answers.txt
