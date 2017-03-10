@@ -15,7 +15,7 @@ get_property(TEMPLATE_NAME_LIBRARIES GLOBAL PROPERTY TEMPLATE_NAME_LIBRARIES)
 include_directories(${YARP_INCLUDE_DIRS} ${TEMPLATE_NAME_INCLUDE_DIRS})
 
 # Configure executable build target.
-add_library(${KEYWORD} main.cpp ExampleProgram.cpp Exampleprogram.hpp)
+add_library(${KEYWORD} main.cpp ExampleProgram.cpp ExampleProgram.hpp)
 
 # Link external libraries.
 target_link_libraries(${KEYWORD} ${YARP_LIBRARIES} ${TEMPLATE_NAME_LIBRARIES})
