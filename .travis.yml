@@ -3,7 +3,7 @@ os: linux
 compiler: gcc
 
 before_install:
-  - sudo apt-get install doxygen
+  - sudo apt-get install doxygen # libcurl4-openssl-dev (already available in Travis CI environment)
   - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
   - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
 
