@@ -17,7 +17,7 @@ install:
   - cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
   - make
   - sudo make install
-  - cmake --version # FIXME remove this
+  - hash -r
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
