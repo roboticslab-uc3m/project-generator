@@ -1,6 +1,6 @@
 # Copyright: Universidad Carlos III de Madrid (C) TEMPLATE_YEAR
 # Authors: TEMPLATE_AUTHOR
-# CopyPolicy: Released under the terms of the GNU GPL v2.0.
+# CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
 cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 

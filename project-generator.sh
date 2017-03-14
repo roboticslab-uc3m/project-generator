@@ -15,6 +15,8 @@ echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
 read PROJECT_AUTHOR
+echo LICENSE? \(e.g. \"LGPLv2.1 or later\", \"GNU GPL v2.0\"\)
+read PROJECT_LICENSE
 echo Installation directory "["${KEPT_DIR}"]"?
 read INSTALL_DIR
 if [ -z "$INSTALL_DIR" ]; then
@@ -69,6 +71,7 @@ find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_PASCAL/$PROJECT_PASCAL/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
+find -type f -exec sed -i "s/TEMPLATE_LICENSE/$PROJECT_LICENSE/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_DESCRIPTION/$PROJECT_DESCRIPTION/g" {} +
 
