@@ -23,7 +23,7 @@ fi
 echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
-mkdir -p cmake doc example extern firmware libraries programs scripts share
+mkdir -p cmake/template doc example extern firmware libraries programs scripts share
 mkdir -p scripts/admin scripts/gnome scripts/package
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
