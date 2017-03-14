@@ -8,6 +8,7 @@ before_install:
   - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
 
 install:
+  - cd
   - git clone https://github.com/kitware/cmake
   - cd cmake
   - git checkout tags/v2.8.9
