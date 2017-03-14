@@ -104,4 +104,3 @@ endif()
 include(IncludeUrl)
 include_url(${YCM_BOOTSTRAP_BASE_ADDRESS}/modules/YCMEPHelper.cmake)
 ycm_bootstrap()
-
