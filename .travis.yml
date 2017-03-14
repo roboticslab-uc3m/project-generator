@@ -17,7 +17,7 @@ install:
   - mkdir build
   - cd build
   - cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
-  - make
+  - make -j2
   - sudo make install
   - hash -r
   # Download and configure YARP
