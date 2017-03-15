@@ -31,6 +31,8 @@ mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
 
+cp $SCRIPT_DIR/.gitignore .
+
 cp $SCRIPT_DIR/TEMPLATE_NAMEConfig.cmake.in $PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/IncludeUrl.cmake cmake
