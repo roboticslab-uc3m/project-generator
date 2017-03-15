@@ -15,13 +15,13 @@ list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
 include(YCMBootstrap)
 
 # Retrieve current TEMPLATE_NAME version.
-include(TEMPLATE_PASCALVersion)
+include(TEMPLATE_NAMEVersion)
 
 # Define standard paths, check system configuration.
-include(TEMPLATE_PASCALSystem)
+include(TEMPLATE_NAMESystem)
 
 # Setup build options.
-include(TEMPLATE_PASCALOptions)
+include(TEMPLATE_NAMEOptions)
 
 # Define global properties to store relevant configuration.
 set_property(GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
@@ -34,13 +34,13 @@ add_subdirectory(libraries)
 add_subdirectory(programs)
 
 # Output configuration files.
-include(TEMPLATE_PASCALDescribe)
+include(TEMPLATE_NAMEDescribe)
 
 # Create target for documentation generation.
-include(TEMPLATE_PASCALDoc)
+include(TEMPLATE_NAMEDoc)
 
 # Invoke CPack from here.
-include(TEMPLATE_PASCALPackage)
+include(TEMPLATE_NAMEPackage)
 
 # Generate a report of enabled/disabled features.
 feature_summary(FATAL_ON_MISSING_REQUIRED_PACKAGES WHAT ALL)

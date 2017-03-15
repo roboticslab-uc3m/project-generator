@@ -9,8 +9,6 @@ echo Project name \(as in PROJECT_GENERATOR\)?
 read PROJECT_NAME
 PROJECT_LOWER="$(echo "$PROJECT_NAME" | tr '[:upper:]' '[:lower:]' | sed 's/_/-/')"
 echo "Project lower case name with dashes: $PROJECT_LOWER"
-PROJECT_PASCAL="$(echo "$PROJECT_LOWER" | sed -r 's/(^|-)([a-z])/\U\2/g')"
-echo "Project upper pascal case name: $PROJECT_PASCAL"
 echo Project description?
 read PROJECT_DESCRIPTION
 echo AUTHOR?
@@ -33,23 +31,23 @@ cp $SCRIPT_DIR/CMakeLists.txt .
 
 cp $SCRIPT_DIR/.gitignore .
 
-cp $SCRIPT_DIR/TEMPLATE_NAMEConfig.cmake.in $PROJECT_NAME"Config.cmake.in"
-
 cp $SCRIPT_DIR/cmake/IncludeUrl.cmake cmake
 
 cp $SCRIPT_DIR/cmake/YCMBootstrap.cmake cmake
 
-cp $SCRIPT_DIR/cmake/ProjectDescribe.cmake "cmake/"$PROJECT_PASCAL"Describe.cmake"
+cp $SCRIPT_DIR/TEMPLATE_NAMEConfig.cmake.in $PROJECT_NAME"Config.cmake.in"
 
-cp $SCRIPT_DIR/cmake/ProjectDoc.cmake "cmake/"$PROJECT_PASCAL"Doc.cmake"
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDescribe.cmake "cmake/"$PROJECT_NAME"Describe.cmake"
 
-cp $SCRIPT_DIR/cmake/ProjectOptions.cmake "cmake/"$PROJECT_PASCAL"Options.cmake"
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDoc.cmake "cmake/"$PROJECT_NAME"Doc.cmake"
 
-cp $SCRIPT_DIR/cmake/ProjectPackage.cmake "cmake/"$PROJECT_PASCAL"Package.cmake"
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEOptions.cmake "cmake/"$PROJECT_NAME"Options.cmake"
 
-cp $SCRIPT_DIR/cmake/ProjectSystem.cmake "cmake/"$PROJECT_PASCAL"System.cmake"
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEPackage.cmake "cmake/"$PROJECT_NAME"Package.cmake"
 
-cp $SCRIPT_DIR/cmake/ProjectVersion.cmake "cmake/"$PROJECT_PASCAL"Version.cmake"
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMESystem.cmake "cmake/"$PROJECT_NAME"System.cmake"
+
+cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEVersion.cmake "cmake/"$PROJECT_NAME"Version.cmake"
 
 cp $SCRIPT_DIR/doc/* doc
 
@@ -71,7 +69,6 @@ cp $SCRIPT_DIR/scripts/package/* scripts/package
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LOWER/$PROJECT_LOWER/g" {} +
-find -type f -exec sed -i "s/TEMPLATE_PASCAL/$PROJECT_PASCAL/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_AUTHOR/$PROJECT_AUTHOR/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_LICENSE/$PROJECT_LICENSE/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_YEAR/$PROJECT_YEAR/g" {} +
