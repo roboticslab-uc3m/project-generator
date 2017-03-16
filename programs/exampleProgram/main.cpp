@@ -14,7 +14,7 @@
  * Author: TEMPLATE_AUTHOR
  *
  * CopyPolicy: This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License 3.0 or later
+ * it under the terms of the TEMPLATE_LICENSE
  *
  * <hr>
  *

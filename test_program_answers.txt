@@ -1,0 +1,5 @@
+TEST_PROGRAM
+Test program for testing purposes.
+John Tester
+LGPLv2.1 or later
+test_program

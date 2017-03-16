@@ -1,0 +1,38 @@
+language: cpp
+os: linux
+compiler: gcc
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get --no-install-recommends install -y doxygen # libcurl4-openssl-dev (already available in Travis CI environment)
+  - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
+  - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
+
+install:
+  # Download, build and install CMake
+  - cd
+  - git clone https://github.com/kitware/cmake
+  - cd cmake
+  - git checkout tags/v2.8.9
+  - mkdir build
+  - cd build
+  - cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
+  - make -j2
+  - sudo make install
+  - hash -r
+  # Download and configure YARP
+  - cd
+  - git clone --depth=1 https://github.com/robotology/yarp
+  - cd yarp
+  - mkdir build
+  - cd build
+  - cmake .. -DSKIP_ACE:BOOL=ON
+  - export YARP_DIR=$PWD
+
+before_script:
+  - cd $TRAVIS_BUILD_DIR
+  - ./project-generator.sh < test_program_answers.txt
+  - cd $(tail -n 1 test_program_answers.txt)
+
+script:
+  - scripts/package/make_package.sh
