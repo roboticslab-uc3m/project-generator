@@ -28,8 +28,11 @@
 *.out
 *.app
 
-# Other
+# CMake
+CMakeLists.txt.user
 **/build*/
 /.project
 /.cproject
+
+# Other
 /external/
