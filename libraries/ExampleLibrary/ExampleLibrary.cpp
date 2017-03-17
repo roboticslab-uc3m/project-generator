@@ -2,7 +2,7 @@
 
 #include "ExampleLibrary.hpp"
 
-namespace teo
+namespace roboticslab
 {
 
 /************************************************************************/
