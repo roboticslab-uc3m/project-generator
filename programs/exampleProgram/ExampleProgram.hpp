@@ -5,7 +5,7 @@
 
 #include <yarp/os/all.h>
 
-namespace teo
+namespace roboticslab
 {
 
 /**

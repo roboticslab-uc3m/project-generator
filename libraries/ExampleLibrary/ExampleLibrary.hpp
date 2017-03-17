@@ -3,7 +3,7 @@
 #ifndef __EXAMPLE_LIBRARY_HPP__
 #define __EXAMPLE_LIBRARY_HPP__
 
-namespace teo
+namespace roboticslab
 {
 
 /**
