@@ -2,6 +2,15 @@ language: cpp
 os: linux
 compiler: gcc
 
+env:
+  global:
+    - CMAKE_VER=2.8.9
+    - CMAKE_CACHE_DIR=~/.cmake
+
+cache:
+  directories:
+    - $CMAKE_CACHE_DIR
+
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get --no-install-recommends install -y doxygen # libcurl4-openssl-dev (already available in Travis CI environment)
@@ -9,15 +18,22 @@ before_install:
   - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
 
 install:
-  # Download, build and install CMake
-  - cd
-  - git clone https://github.com/kitware/cmake
-  - cd cmake
-  - git checkout tags/v2.8.9
-  - mkdir build
-  - cd build
-  - cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
-  - make -j2
+  # Is CMake available in the cache?
+  - >-
+    if [ ! -d $CMAKE_CACHE_DIR/cmake-$CMAKE_VER ]; then
+      cd $CMAKE_CACHE_DIR
+      git clone https://github.com/kitware/cmake cmake-$CMAKE_VER
+      cd cmake-$CMAKE_VER
+      git checkout tags/v$CMAKE_VER
+      mkdir build
+      cd build
+      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
+      make -j2
+    else
+      echo "CMake directory found in cache"
+      cd $CMAKE_CACHE_DIR/cmake-$CMAKE_VER/build
+    fi
+  # Install cached/built CMake, shadow packaged version
   - sudo make install
   - hash -r
   # Download and configure YARP
