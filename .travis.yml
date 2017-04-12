@@ -34,9 +34,9 @@ install:
       echo "CMake directory found in cache"
     fi
 
-  # Install cached/built CMake, shadow packaged version
-  - sudo cp -r $CMAKE_CACHE_DIR/* /usr/local/
-  - hash -r
+  # Shadow packaged CMake
+  - export PATH=$CMAKE_CACHE_DIR/bin/:$PATH
+  - export CMAKE_MODULE_PATH=$CMAKE_CACHE_DIR/share/cmake-2.8/Modules/
   - cmake -version
 
   # Download and configure YARP
