@@ -36,7 +36,8 @@ install:
 
   # Shadow packaged CMake
   - export PATH=$CMAKE_CACHE_DIR/bin/:$PATH
-  - export CMAKE_MODULE_PATH=$CMAKE_CACHE_DIR/share/cmake-2.8/Modules/
+  - export CMAKE_MODULE_PATH=`find $CMAKE_CACHE_DIR/share -maxdepth 1 -type d -name cmake-* | head -n 1`/Modules
+  - echo $CMAKE_MODULE_PATH
   - cmake -version
 
   # Download and configure YARP
