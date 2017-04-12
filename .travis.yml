@@ -20,7 +20,7 @@ before_install:
 install:
   # Is CMake available in the cache?
   - >-
-    if [ ! -d "$CMAKE_CACHE_DIR/*" ] || [ ! -f "$CMAKE_CACHE_DIR/.version" ] || [ ! $(cat "$CMAKE_CACHE_DIR/.version") = "$CMAKE_VER" ]; then
+    if [ ! -d "$CMAKE_CACHE_DIR"/* ] || [ ! -f "$CMAKE_CACHE_DIR/.version" ] || [ ! $(cat "$CMAKE_CACHE_DIR/.version") = "$CMAKE_VER" ]; then
       echo "CMake not in cache or wrong version"
       rm -rf "$CMAKE_CACHE_DIR/*"
       cd
