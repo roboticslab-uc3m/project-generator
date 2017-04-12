@@ -20,22 +20,25 @@ before_install:
 install:
   # Is CMake available in the cache?
   - >-
-    if [ ! -d $CMAKE_CACHE_DIR/cmake-$CMAKE_VER ]; then
-      cd $CMAKE_CACHE_DIR
-      git clone https://github.com/kitware/cmake cmake-$CMAKE_VER
-      cd cmake-$CMAKE_VER
+    if [ ! -d $CMAKE_CACHE_DIR/* ]; then
+      cd
+      git clone https://github.com/kitware/cmake
+      cd cmake
       git checkout tags/v$CMAKE_VER
       mkdir build
       cd build
-      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
+      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON -DCMAKE_INSTALL_PREFIX=$CMAKE_CACHE_DIR
       make -j2
+      make install
     else
       echo "CMake directory found in cache"
-      cd $CMAKE_CACHE_DIR/cmake-$CMAKE_VER/build
     fi
+
   # Install cached/built CMake, shadow packaged version
-  - sudo make install
+  - sudo cp -r $CMAKE_CACHE_DIR/* /usr/local/
   - hash -r
+  - cmake -version
+
   # Download and configure YARP
   - cd
   - git clone --depth=1 https://github.com/robotology/yarp
