@@ -15,7 +15,7 @@ unset(_TEMPLATE_NAME_LIBRARIES) # just in case
 
 # Set build/install pairs of paths for each exported property.
 set(TEMPLATE_NAME_BUILD_INCLUDE_DIRS ${TEMPLATE_NAME_INCLUDE_DIRS})
-set(TEMPLATE_NAME_INSTALL_INCLUDE_DIRS ${CMAKE_INSTALL_FULL_DATADIR}/TEMPLATE_LOWER/cmake)
+set(TEMPLATE_NAME_INSTALL_INCLUDE_DIRS ${CMAKE_INSTALL_FULL_INCLUDEDIR})
 
 # Create and install config and version files (YCM).
 include(InstallBasicPackageFiles)

@@ -27,8 +27,6 @@ install(TARGETS ${KEYWORD}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT example_library
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT example_library)
 
-# Export library name and current target. Store include paths in target.
+# Export library name and current target.
 set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_LIBRARIES ${KEYWORD})
 set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_TARGETS ${KEYWORD})
-set_property(TARGET ${KEYWORD} PROPERTY INCLUDE_DIRS ${TEMPLATE_NAME_INCLUDE_DIRS})
-

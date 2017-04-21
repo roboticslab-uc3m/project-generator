@@ -14,28 +14,35 @@ cache:
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get --no-install-recommends install -y doxygen # libcurl4-openssl-dev (already available in Travis CI environment)
-  - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
-  - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
+  - if [ ! $(git config --get user.email) ]; then $(git config --global user.email 'user@example.com'); fi
+  - if [ ! $(git config --get user.name) ]; then $(git config --global user.name 'Travis CI'); fi
 
 install:
   # Is CMake available in the cache?
   - >-
-    if [ ! -d $CMAKE_CACHE_DIR/cmake-$CMAKE_VER ]; then
-      cd $CMAKE_CACHE_DIR
-      git clone https://github.com/kitware/cmake cmake-$CMAKE_VER
-      cd cmake-$CMAKE_VER
-      git checkout tags/v$CMAKE_VER
+    if [ ! -d "$CMAKE_CACHE_DIR"/* ] || [ ! -f "$CMAKE_CACHE_DIR/.version" ] || [ ! $(cat "$CMAKE_CACHE_DIR/.version") = "$CMAKE_VER" ]; then
+      echo "CMake not in cache or wrong version"
+      rm -rf "$CMAKE_CACHE_DIR/*"
+      cd
+      git clone https://github.com/kitware/cmake
+      cd cmake
+      git checkout "tags/v$CMAKE_VER"
       mkdir build
       cd build
-      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON
+      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON -DCMAKE_INSTALL_PREFIX=$CMAKE_CACHE_DIR
       make -j2
+      make install
+      echo "$CMAKE_VER" > "$CMAKE_CACHE_DIR/.version"
     else
-      echo "CMake directory found in cache"
-      cd $CMAKE_CACHE_DIR/cmake-$CMAKE_VER/build
+      echo "CMake directory found in cache (version $(cat "$CMAKE_CACHE_DIR/.version"))"
     fi
-  # Install cached/built CMake, shadow packaged version
-  - sudo make install
-  - hash -r
+
+  # Shadow packaged CMake
+  - export PATH=$CMAKE_CACHE_DIR/bin/:$PATH
+  - export CMAKE_MODULE_PATH="$(find "$CMAKE_CACHE_DIR/share" -maxdepth 1 -type d -name cmake-* | head -n 1)/Modules"
+  - echo "$CMAKE_MODULE_PATH"
+  - cmake -version
+
   # Download and configure YARP
   - cd
   - git clone --depth=1 https://github.com/robotology/yarp
