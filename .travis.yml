@@ -28,14 +28,10 @@ install:
       echo "CMake not in cache or wrong version"
       rm -rf "$CMAKE_CACHE_DIR/*"
       cd
-      git clone https://github.com/kitware/cmake
-      cd cmake
-      git checkout "tags/v$CMAKE_VER"
-      mkdir build
-      cd build
-      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON -DCMAKE_INSTALL_PREFIX=$CMAKE_CACHE_DIR
-      make -j2
-      make install
+      wget -qO- "https://github.com/kitware/CMake/archive/v$CMAKE_VER.tar.gz" | tar xz
+      mkdir -p "CMake-$CMAKE_VER/build" && cd "$_"
+      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON -DCMAKE_INSTALL_PREFIX="$CMAKE_CACHE_DIR"
+      make -j2 install
       echo "$CMAKE_VER" > "$CMAKE_CACHE_DIR/.version"
     else
       echo "CMake directory found in cache (version $(cat "$CMAKE_CACHE_DIR/.version"))"
@@ -53,11 +49,8 @@ install:
       echo "YARP not in cache or wrong version"
       rm -rf "$YARP_CACHE_DIR/*"
       cd
-      git clone https://github.com/robotology/yarp
-      cd yarp
-      git checkout "tags/v$YARP_VER"
-      mkdir build
-      cd build
+      wget -qO- "https://github.com/robotology/yarp/archive/v$YARP_VER.tar.gz" | tar xz
+      mkdir -p "yarp-$YARP_VER/build" && cd "$_"
       cmake .. -DCMAKE_INSTALL_PREFIX:PATH="$YARP_CACHE_DIR" -DSKIP_ACE:BOOL=ON
       sudo make -j2 install
       echo "$YARP_VER" > "$YARP_CACHE_DIR/.version"
