@@ -7,10 +7,13 @@ env:
   global:
     - CMAKE_VER=2.8.9
     - CMAKE_CACHE_DIR=~/.cmake
+    - YARP_VER=2.3.68
+    - YARP_CACHE_DIR=~/.yarp
 
 cache:
   directories:
     - $CMAKE_CACHE_DIR
+    - $YARP_CACHE_DIR
 
 before_install:
   - sudo apt-get -qq update
@@ -19,7 +22,7 @@ before_install:
   - if [ ! $(git config --get user.name) ]; then $(git config --global user.name 'Travis CI'); fi
 
 install:
-  # Is CMake available in the cache?
+  # Clone and build CMake if not in cache
   - >-
     if [ ! "$(ls -A "$CMAKE_CACHE_DIR")" ] || [ ! -f "$CMAKE_CACHE_DIR/.version" ] || [ ! $(cat "$CMAKE_CACHE_DIR/.version") = "$CMAKE_VER" ]; then
       echo "CMake not in cache or wrong version"
@@ -44,14 +47,26 @@ install:
   - echo "$CMAKE_MODULE_PATH"
   - cmake -version
 
-  # Download and configure YARP
-  - cd
-  - git clone --depth=1 https://github.com/robotology/yarp
-  - cd yarp
-  - mkdir build
-  - cd build
-  - cmake .. -DSKIP_ACE:BOOL=ON
-  - export YARP_DIR=$PWD
+  # Clone and build YARP if not in cache
+  - >-
+    if [ ! "$(ls -A "$YARP_CACHE_DIR")" ] || [ ! -f "$YARP_CACHE_DIR/.version" ] || [ ! $(cat "$YARP_CACHE_DIR/.version") = "$YARP_VER" ]; then
+      echo "YARP not in cache or wrong version"
+      rm -rf "$YARP_CACHE_DIR/*"
+      cd
+      git clone https://github.com/robotology/yarp
+      cd yarp
+      git checkout "tags/v$YARP_VER"
+      mkdir build
+      cd build
+      cmake .. -DCMAKE_INSTALL_PREFIX:PATH="$YARP_CACHE_DIR" -DSKIP_ACE:BOOL=ON
+      sudo make -j2 install
+      echo "$YARP_VER" > "$YARP_CACHE_DIR/.version"
+    else
+      echo "YARP directory found in cache (version $(cat "$YARP_CACHE_DIR/.version"))"
+    fi
+
+  # Make installed YARP discoverable by CMake's find_package() command
+  - export YARP_DIR=$YARP_CACHE_DIR/lib/YARP
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
