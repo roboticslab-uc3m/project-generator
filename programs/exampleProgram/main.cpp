@@ -5,7 +5,7 @@
  * @ingroup TEMPLATE_LOWER_programs
  * \defgroup exampleProgram
  *
- * @brief Creates an instance of teo::ExampleProgram
+ * @brief Creates an instance of roboticslab::ExampleProgram
  *
  * @section exampleProgram_legal Legal
  *

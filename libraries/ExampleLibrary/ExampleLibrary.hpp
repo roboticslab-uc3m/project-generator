@@ -19,6 +19,6 @@ class ExampleLibrary {
 
 };
 
-}  // namespace teo
+}  // namespace roboticslab
 
 #endif  // __EXAMPLE_LIBRARY_HPP__
