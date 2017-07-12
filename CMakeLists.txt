@@ -12,6 +12,8 @@ set(TEMPLATE_NAME_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
 
 # Bootstrap YCM.
+# https://github.com/robotology/ycm/issues/118
+set(YCM_TAG v0.2.2)
 include(YCMBootstrap)
 
 # Retrieve current TEMPLATE_NAME version.
