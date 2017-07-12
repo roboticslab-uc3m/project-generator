@@ -40,5 +40,4 @@ bool ExampleProgram::interruptModule() {
 
 /************************************************************************/
 
-}  // namespace teo
-
+}  // namespace roboticslab

@@ -11,5 +11,4 @@ namespace roboticslab
 
 /************************************************************************/
 
-}  // namespace teo
-
+}  // namespace roboticslab
