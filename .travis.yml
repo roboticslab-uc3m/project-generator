@@ -7,7 +7,7 @@ env:
   global:
     - CMAKE_VER=2.8.9
     - CMAKE_CACHE_DIR=~/.cmake
-    - YARP_VER=2.3.68
+    - YARP_VER=2.3.68.1
     - YARP_CACHE_DIR=~/.yarp
 
 cache:
