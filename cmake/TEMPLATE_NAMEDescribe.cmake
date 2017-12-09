@@ -24,7 +24,7 @@ install(FILES ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfigVersion.cmake
         DESTINATION ${_cmake_destination})
 
 # Set exported variables (build tree).
-set(TEMPLATE_NAME_INCLUDE_DIR ${_common_includes})
+set(TEMPLATE_NAME_INCLUDE_DIR "${_common_includes}")
 set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake)
 
 # <pkg>Config.cmake (build tree).
