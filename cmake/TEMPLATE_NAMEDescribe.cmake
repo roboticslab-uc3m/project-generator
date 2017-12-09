@@ -34,7 +34,7 @@ set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_INSTALL_DATADIR}/TEMPLATE_NAME/cmake)
 
 # <pkg>Config.cmake (install tree).
 configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfig.cmake.in
-                              ${CMAKE_BINARY_DIR}/TEMPLATE_NAME.cmake.install
+                              ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake.install
                               INSTALL_DESTINATION ${_cmake_destination}
                               PATH_VARS TEMPLATE_NAME_INCLUDE_DIR
                                         TEMPLATE_NAME_MODULE_DIR
