@@ -35,4 +35,3 @@ endif()
 if(MSVC)
   mark_as_advanced(CMAKE_BUILD_TYPE)
 endif()
-

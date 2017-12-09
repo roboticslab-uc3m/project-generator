@@ -10,4 +10,3 @@ yarp_configure_external_installation(TEMPLATE_LOWER)
 ### Go through single applications
 
 #add_subdirectory(prog)
-

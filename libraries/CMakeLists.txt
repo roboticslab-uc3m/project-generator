@@ -2,7 +2,4 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
-if(ENABLE_ExampleLibrary)
-  add_subdirectory(ExampleLibrary)
-endif()
-
+add_subdirectory(ExampleLibrary)

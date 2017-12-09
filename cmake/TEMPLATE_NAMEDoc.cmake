@@ -22,4 +22,3 @@ if(DOXYGEN_FOUND)
   # Register features.
   add_feature_info(TEMPLATE_NAME_docs TEMPLATE_NAME_DOXYGEN_HTML "TEMPLATE_NAME documentation generator.")
 endif()
-

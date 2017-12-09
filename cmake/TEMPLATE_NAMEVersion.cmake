@@ -47,4 +47,3 @@ endif()
 
 # Print version.
 message(STATUS "TEMPLATE_NAME version: ${TEMPLATE_NAME_VERSION_SHORT} (${TEMPLATE_NAME_VERSION})")
-
