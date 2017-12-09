@@ -7,13 +7,21 @@ get_property(_exported_targets GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
 
 # CMake installation path.
 if(WIN32)
-    set(_cmake_destination cmake)
+    set(_cmake_destination CMake)
 else()
     set(_cmake_destination ${CMAKE_INSTALL_LIBDIR}/cmake/TEMPLATE_NAME)
 endif()
 
 # Create and install config files.
 include(CMakePackageConfigHelpers)
+
+# <name>ConfigVersion.cmake file (same for build and install trees).
+write_basic_package_version_file(${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfigVersion.cmake
+                                 VERSION ${TEMPLATE_NAME_VERSION_SHORT}
+                                 COMPATIBILITY AnyNewerVersion)
+
+install(FILES ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfigVersion.cmake
+        DESTINATION ${_cmake_destination})
 
 # Set exported variables (build tree).
 set(TEMPLATE_NAME_INCLUDE_DIR ${_common_includes})
