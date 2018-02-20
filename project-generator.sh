@@ -30,8 +30,8 @@ fi
 echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
-mkdir -p cmake/template cmake/find-modules
-mkdir -p doc example extern firmware libraries programs scripts share
+mkdir -p cmake/templates cmake/find-modules
+mkdir -p doc examples extern firmware libraries programs scripts share
 mkdir -p scripts/admin scripts/gnome scripts/package
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
@@ -45,7 +45,7 @@ cp $SCRIPT_DIR/cmake/IncludeUrl.cmake cmake
 
 cp $SCRIPT_DIR/cmake/YCMBootstrap.cmake cmake
 
-cp $SCRIPT_DIR/cmake/template/TEMPLATE_NAMEConfig.cmake.in "cmake/template/"$PROJECT_NAME"Config.cmake.in"
+cp $SCRIPT_DIR/cmake/templates/TEMPLATE_NAMEConfig.cmake.in "cmake/templates/"$PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDescribe.cmake "cmake/"$PROJECT_NAME"Describe.cmake"
 

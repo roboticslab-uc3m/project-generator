@@ -28,7 +28,7 @@ set(TEMPLATE_NAME_INCLUDE_DIR "${_common_includes}")
 set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake)
 
 # <pkg>Config.cmake (build tree).
-configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfig.cmake.in
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/templates/TEMPLATE_NAMEConfig.cmake.in
                               ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake
                               INSTALL_DESTINATION ${CMAKE_BINARY_DIR}
                               INSTALL_PREFIX ${CMAKE_BINARY_DIR}
@@ -41,7 +41,7 @@ set(TEMPLATE_NAME_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
 set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_INSTALL_DATADIR}/TEMPLATE_NAME/cmake)
 
 # <pkg>Config.cmake (install tree).
-configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/template/TEMPLATE_NAMEConfig.cmake.in
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/templates/TEMPLATE_NAMEConfig.cmake.in
                               ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake.install
                               INSTALL_DESTINATION ${_cmake_destination}
                               PATH_VARS TEMPLATE_NAME_INCLUDE_DIR
