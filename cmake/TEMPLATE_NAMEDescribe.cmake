@@ -2,31 +2,72 @@
 export(PACKAGE TEMPLATE_NAME)
 
 # Retrieve global properties.
-get_property(TEMPLATE_NAME_INCLUDE_DIRS GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
-get_property(TEMPLATE_NAME_TARGETS GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
-get_property(_TEMPLATE_NAME_LIBRARIES GLOBAL PROPERTY TEMPLATE_NAME_LIBRARIES)
+get_property(_common_includes GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
+get_property(_exported_targets GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
 
-# Append namespace prefix to exported libraries.
-set(TEMPLATE_NAME_LIBRARIES)
-foreach(lib ${_TEMPLATE_NAME_LIBRARIES})
-  list(APPEND TEMPLATE_NAME_LIBRARIES TEMPLATE_NAME::${lib})
-endforeach()
-unset(_TEMPLATE_NAME_LIBRARIES) # just in case
+# CMake installation path.
+if(WIN32)
+    set(_cmake_destination CMake)
+else()
+    set(_cmake_destination ${CMAKE_INSTALL_LIBDIR}/cmake/TEMPLATE_NAME)
+endif()
 
-# Set build/install pairs of paths for each exported property.
-set(TEMPLATE_NAME_BUILD_INCLUDE_DIRS ${TEMPLATE_NAME_INCLUDE_DIRS})
-set(TEMPLATE_NAME_INSTALL_INCLUDE_DIRS ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+# Create and install config files.
+include(CMakePackageConfigHelpers)
 
-# Create and install config and version files (YCM).
-include(InstallBasicPackageFiles)
+# <name>ConfigVersion.cmake file (same for build and install trees).
+write_basic_package_version_file(${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfigVersion.cmake
+                                 VERSION ${TEMPLATE_NAME_VERSION_SHORT}
+                                 COMPATIBILITY AnyNewerVersion)
 
-install_basic_package_files(TEMPLATE_NAME
-                            VERSION ${TEMPLATE_NAME_VERSION_SHORT}
-                            COMPATIBILITY AnyNewerVersion
-                            TARGETS_PROPERTY TEMPLATE_NAME_TARGETS
-                            NO_CHECK_REQUIRED_COMPONENTS_MACRO
-                            EXTRA_PATH_VARS_SUFFIX INCLUDE_DIRS)
+install(FILES ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfigVersion.cmake
+        DESTINATION ${_cmake_destination})
+
+# Set exported variables (build tree).
+set(TEMPLATE_NAME_INCLUDE_DIR "${_common_includes}")
+set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_SOURCE_DIR}/cmake)
+
+# <pkg>Config.cmake (build tree).
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/templates/TEMPLATE_NAMEConfig.cmake.in
+                              ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake
+                              INSTALL_DESTINATION ${CMAKE_BINARY_DIR}
+                              INSTALL_PREFIX ${CMAKE_BINARY_DIR}
+                              PATH_VARS TEMPLATE_NAME_INCLUDE_DIR
+                                        TEMPLATE_NAME_MODULE_DIR
+                              NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+
+# Set exported variables (install tree).
+set(TEMPLATE_NAME_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+set(TEMPLATE_NAME_MODULE_DIR ${CMAKE_INSTALL_DATADIR}/TEMPLATE_NAME/cmake)
+
+# <pkg>Config.cmake (install tree).
+configure_package_config_file(${CMAKE_SOURCE_DIR}/cmake/templates/TEMPLATE_NAMEConfig.cmake.in
+                              ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake.install
+                              INSTALL_DESTINATION ${_cmake_destination}
+                              PATH_VARS TEMPLATE_NAME_INCLUDE_DIR
+                                        TEMPLATE_NAME_MODULE_DIR
+                              NO_CHECK_REQUIRED_COMPONENTS_MACRO)
+
+# Install <pkg>Config.cmake.
+install(FILES ${CMAKE_BINARY_DIR}/TEMPLATE_NAMEConfig.cmake.install
+        RENAME TEMPLATE_NAMEConfig.cmake
+        DESTINATION ${_cmake_destination})
+
+# Export library targets if enabled.
+# https://github.com/roboticslab-uc3m/project-generator/issues/19
+if(_exported_targets)
+    # <pkg>Targets.cmake (build tree).
+    # In CMake 3.0 or later: export(EXPORT TEMPLATE_NAME...)
+    export(TARGETS ${_exported_targets}
+           NAMESPACE TEMPLATE_CM_NAMESPACE::
+           FILE TEMPLATE_NAMETargets.cmake)
+
+    # <pkg>Targets.cmake (install tree).
+    install(EXPORT TEMPLATE_NAME
+            DESTINATION ${_cmake_destination}
+            NAMESPACE TEMPLATE_CM_NAMESPACE::
+            FILE TEMPLATE_NAMETargets.cmake)
+endif()
 
 # Configure and create uninstall target (YCM).
 include(AddUninstallTarget)
-

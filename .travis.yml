@@ -67,4 +67,4 @@ before_script:
   - cd $(tail -n 1 test_program_answers.txt)
 
 script:
-  - scripts/package/make_package.sh
+  - ./scripts/package/make_package.sh

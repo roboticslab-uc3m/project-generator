@@ -8,8 +8,8 @@ cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 project(TEMPLATE_NAME)
 
 # Set module path.
-set(TEMPLATE_NAME_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
-list(APPEND CMAKE_MODULE_PATH ${TEMPLATE_NAME_MODULE_PATH})
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
+                              ${CMAKE_SOURCE_DIR}/cmake/find-modules)
 
 # Bootstrap YCM.
 # https://github.com/robotology/ycm/issues/118
@@ -27,10 +27,10 @@ include(TEMPLATE_NAMEOptions)
 
 # Define global properties to store relevant configuration.
 set_property(GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
-set_property(GLOBAL PROPERTY TEMPLATE_NAME_LIBRARIES)
 set_property(GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
 
 # Define and enter subdirectories.
+add_subdirectory(cmake)
 add_subdirectory(share)
 add_subdirectory(libraries)
 add_subdirectory(programs)
@@ -46,4 +46,3 @@ include(TEMPLATE_NAMEPackage)
 
 # Generate a report of enabled/disabled features.
 feature_summary(FATAL_ON_MISSING_REQUIRED_PACKAGES WHAT ALL)
-
