@@ -30,7 +30,7 @@ fi
 echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
-mkdir -p cmake/templates cmake/find-modules
+mkdir -p cmake/templates cmake/modules cmake/find-modules
 mkdir -p doc examples extern firmware libraries programs scripts share
 mkdir -p scripts/admin scripts/gnome scripts/package
 mkdir -p libraries/ExampleLibrary programs/exampleProgram

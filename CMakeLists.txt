@@ -9,6 +9,7 @@ project(TEMPLATE_NAME)
 
 # Set module path.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
+                              ${CMAKE_SOURCE_DIR}/cmake/modules
                               ${CMAKE_SOURCE_DIR}/cmake/find-modules)
 
 # Bootstrap YCM.
