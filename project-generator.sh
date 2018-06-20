@@ -41,8 +41,6 @@ cp $SCRIPT_DIR/.gitignore .
 
 cp $SCRIPT_DIR/cmake/CMakeLists.txt cmake
 
-cp $SCRIPT_DIR/cmake/ycm-modules/* cmake/ycm-modules
-
 cp $SCRIPT_DIR/cmake/templates/TEMPLATE_NAMEConfig.cmake.in "cmake/templates/"$PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDescribe.cmake "cmake/"$PROJECT_NAME"Describe.cmake"
