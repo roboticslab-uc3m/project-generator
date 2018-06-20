@@ -6,9 +6,6 @@ if(ENABLE_ExampleLibrary)
 
 set(KEYWORD "ExampleLibrary")
 
-# Find YARP.
-find_package(YARP REQUIRED)
-
 # Add current directory to global include paths, retrieve current values.
 set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}")
 get_property(_common_dirs GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)

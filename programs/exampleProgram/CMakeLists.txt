@@ -6,9 +6,6 @@ if(ENABLE_exampleProgram)
 
 set(KEYWORD "exampleProgram")
 
-# Find YARP.
-find_package(YARP REQUIRED)
-
 # Retrieve global include paths and libraries.
 get_property(_common_dirs GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
 get_property(_exported_targets GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)

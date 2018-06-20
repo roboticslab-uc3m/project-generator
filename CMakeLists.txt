@@ -18,6 +18,13 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
 set(YCM_TAG v0.2.2)
 include(YCMBootstrap)
 
+# Find YARP.
+find_package(YARP REQUIRED)
+
+list(APPEND CMAKE_MODULE_PATH ${YARP_MODULE_PATH})
+include(YarpInstallationHelpers)
+yarp_configure_external_installation(TEMPLATE_LOWER)
+
 # Retrieve current TEMPLATE_NAME version.
 include(TEMPLATE_NAMEVersion)
 
