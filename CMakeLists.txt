@@ -10,13 +10,10 @@ project(TEMPLATE_NAME)
 # Set module path.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
                               ${CMAKE_SOURCE_DIR}/cmake/modules
-                              ${CMAKE_SOURCE_DIR}/cmake/find-modules
-                              ${CMAKE_SOURCE_DIR}/cmake/ycm-modules)
+                              ${CMAKE_SOURCE_DIR}/cmake/find-modules)
 
-# Bootstrap YCM.
-# https://github.com/robotology/ycm/issues/118
-set(YCM_TAG v0.2.2)
-include(YCMBootstrap)
+# Find YCM.
+find_package(YCM 0.8 REQUIRED)
 
 # Find YARP.
 # https://github.com/roboticslab-uc3m/questions-and-answers/issues/65
