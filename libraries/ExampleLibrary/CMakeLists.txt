@@ -6,19 +6,12 @@ if(ENABLE_ExampleLibrary)
 
 set(KEYWORD "ExampleLibrary")
 
-# Add current directory to global include paths, retrieve current values.
-set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}")
-get_property(_common_dirs GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
-
-# Define include paths.
-include_directories(${_common_dirs})
-
 # Configure library build target.
-add_library(${KEYWORD} ExampleLibrary.cpp
-                       ExampleLibrary.hpp)
+add_library(${KEYWORD} SHARED ExampleLibrary.cpp
+                              ExampleLibrary.hpp)
 
 # Link external libraries.
-target_link_libraries(${KEYWORD} LINK_PUBLIC ${YARP_LIBRARIES})
+target_link_libraries(${KEYWORD} PUBLIC YARP::YARP_OS)
 
 # Create installation rule.
 install(TARGETS ${KEYWORD}

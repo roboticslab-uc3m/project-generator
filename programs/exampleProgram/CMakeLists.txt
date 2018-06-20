@@ -6,12 +6,8 @@ if(ENABLE_exampleProgram)
 
 set(KEYWORD "exampleProgram")
 
-# Retrieve global include paths and libraries.
-get_property(_common_dirs GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
+# Retrieve a list of targets defined elsewhere.
 get_property(_exported_targets GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
-
-# Define include paths.
-include_directories(${_common_dirs})
 
 # Configure executable build target.
 add_executable(${KEYWORD} main.cpp
@@ -19,7 +15,8 @@ add_executable(${KEYWORD} main.cpp
                           ExampleProgram.hpp)
 
 # Link external libraries.
-target_link_libraries(${KEYWORD} ${YARP_LIBRARIES}
+target_link_libraries(${KEYWORD} YARP::YARP_OS
+                                 YARP::YARP_init
                                  ${_exported_targets})
 
 # Create installation rule.

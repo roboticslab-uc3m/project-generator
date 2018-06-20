@@ -4,8 +4,9 @@
 
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
-# Start a project.
-project(TEMPLATE_NAME)
+# Start a project. Set the LANGUAGES option according to your
+# needs, e.g. 'C', 'CXX', 'NONE'.
+project(TEMPLATE_NAME LANGUAGES CXX)
 
 # Set module path.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
@@ -34,15 +35,11 @@ include(TEMPLATE_NAMESystem)
 # Setup build options.
 include(TEMPLATE_NAMEOptions)
 
-# Define global properties to store relevant configuration.
-set_property(GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
-set_property(GLOBAL PROPERTY TEMPLATE_NAME_TARGETS)
-
 # Define and enter subdirectories.
 add_subdirectory(cmake)
-add_subdirectory(share)
 add_subdirectory(libraries)
 add_subdirectory(programs)
+add_subdirectory(share)
 
 # Output configuration files.
 include(TEMPLATE_NAMEDescribe)
