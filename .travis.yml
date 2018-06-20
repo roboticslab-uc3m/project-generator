@@ -1,18 +1,15 @@
 language: cpp
-dist: precise
+dist: trusty
 os: linux
 compiler: gcc
 
 env:
   global:
-    - CMAKE_VER=2.8.9
-    - CMAKE_CACHE_DIR=~/.cmake
-    - YARP_VER=2.3.68.1
+    - YARP_VER=2.3.72.1
     - YARP_CACHE_DIR=~/.yarp
 
 cache:
   directories:
-    - $CMAKE_CACHE_DIR
     - $YARP_CACHE_DIR
 
 before_install:
@@ -22,27 +19,6 @@ before_install:
   - if [ ! $(git config --get user.name) ]; then $(git config --global user.name 'Travis CI'); fi
 
 install:
-  # Clone and build CMake if not in cache
-  - >-
-    if [ ! "$(ls -A "$CMAKE_CACHE_DIR")" ] || [ ! -f "$CMAKE_CACHE_DIR/.version" ] || [ ! $(cat "$CMAKE_CACHE_DIR/.version") = "$CMAKE_VER" ]; then
-      echo "CMake not in cache or wrong version"
-      rm -rf "$CMAKE_CACHE_DIR"/*
-      cd
-      wget -qO- "https://github.com/kitware/CMake/archive/v$CMAKE_VER.tar.gz" | tar xz
-      mkdir -p "CMake-$CMAKE_VER/build" && cd "$_"
-      cmake .. -DBUILD_CursesDialog:BOOL=OFF -DBUILD_TESTING:BOOL=OFF -DCMAKE_USE_SYSTEM_CURL:BOOL=ON -DCMAKE_USE_OPENSSL:BOOL=ON -DCMAKE_INSTALL_PREFIX="$CMAKE_CACHE_DIR"
-      make -j2 install
-      echo "$CMAKE_VER" > "$CMAKE_CACHE_DIR/.version"
-    else
-      echo "CMake directory found in cache (version $(cat "$CMAKE_CACHE_DIR/.version"))"
-    fi
-
-  # Shadow packaged CMake
-  - export PATH=$CMAKE_CACHE_DIR/bin/:$PATH
-  - export CMAKE_MODULE_PATH="$(find "$CMAKE_CACHE_DIR/share" -maxdepth 1 -type d -name cmake-* | head -n 1)/Modules"
-  - echo "$CMAKE_MODULE_PATH"
-  - cmake -version
-
   # Clone and build YARP if not in cache
   - >-
     if [ ! "$(ls -A "$YARP_CACHE_DIR")" ] || [ ! -f "$YARP_CACHE_DIR/.version" ] || [ ! $(cat "$YARP_CACHE_DIR/.version") = "$YARP_VER" ]; then

@@ -11,8 +11,7 @@ set_property(GLOBAL APPEND PROPERTY TEMPLATE_NAME_INCLUDE_DIRS "${CMAKE_CURRENT_
 get_property(_common_dirs GLOBAL PROPERTY TEMPLATE_NAME_INCLUDE_DIRS)
 
 # Define include paths.
-include_directories(${YARP_INCLUDE_DIRS}
-                    ${_common_dirs})
+include_directories(${_common_dirs})
 
 # Configure library build target.
 add_library(${KEYWORD} ExampleLibrary.cpp

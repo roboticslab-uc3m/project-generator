@@ -2,7 +2,7 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
-cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 # Start a project.
 project(TEMPLATE_NAME)
@@ -19,10 +19,13 @@ set(YCM_TAG v0.2.2)
 include(YCMBootstrap)
 
 # Find YARP.
-find_package(YARP REQUIRED)
+# https://github.com/roboticslab-uc3m/questions-and-answers/issues/65
+find_package(YARP 3.0 QUIET)
+if(NOT YARP_FOUND)
+    find_package(YARP 2.3.70 REQUIRED)
+endif()
 
-list(APPEND CMAKE_MODULE_PATH ${YARP_MODULE_PATH})
-include(YarpInstallationHelpers)
+# Add WITH_PLUGINS if this projects exports YARP devices.
 yarp_configure_external_installation(TEMPLATE_LOWER)
 
 # Retrieve current TEMPLATE_NAME version.
