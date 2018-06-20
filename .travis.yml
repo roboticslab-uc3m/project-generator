@@ -28,14 +28,14 @@ install:
       wget -qO- "https://github.com/robotology/yarp/archive/v$YARP_VER.tar.gz" | tar xz
       mkdir -p "yarp-$YARP_VER/build" && cd "$_"
       cmake .. -DCMAKE_INSTALL_PREFIX:PATH="$YARP_CACHE_DIR" -DSKIP_ACE:BOOL=ON
-      sudo make -j2 install
+      sudo make -j$(nproc) install
       echo "$YARP_VER" > "$YARP_CACHE_DIR/.version"
     else
       echo "YARP directory found in cache (version $(cat "$YARP_CACHE_DIR/.version"))"
     fi
 
   # Make installed YARP discoverable by CMake's find_package() command
-  - export YARP_DIR=$YARP_CACHE_DIR/lib/YARP
+  - export YARP_DIR=$YARP_CACHE_DIR/lib/cmake/YARP
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
