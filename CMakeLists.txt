@@ -51,4 +51,4 @@ include(TEMPLATE_NAMEDoc)
 include(TEMPLATE_NAMEPackage)
 
 # Generate a report of enabled/disabled features.
-feature_summary(FATAL_ON_MISSING_REQUIRED_PACKAGES WHAT ALL)
+feature_summary(WHAT ALL)
