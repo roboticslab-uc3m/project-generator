@@ -30,7 +30,8 @@ cache:
 addons:
   apt:
     packages:
-    - doxygen
+    - doxygen # documentation
+    - libgtest-dev # unit testing
 
 before_install:
   #-- Configure Git (needed by YCM)

@@ -30,6 +30,7 @@ cache:
 addons:
   apt:
     packages:
+    - libgtest-dev # unit testing
     - lcov # code coverage
 
 before_install:
@@ -73,7 +74,8 @@ before_script:
   - export YARP_DATA_DIRS=$PWD/install/share/TEMPLATE_LOWER:$YARP_DATA_DIRS
 
 script:
-  - #(cd tests && ctest -V)
+  - #(cd tests && ctest -V) # uncomment this and delete next line once set
+  - echo "No unit tests available"
 
 after_success:
   #-- Code coverage
