@@ -27,6 +27,11 @@ matrix:
 cache:
   directories: $CACHE_DIR
 
+addons:
+  apt:
+    packages:
+    - doxygen
+
 before_install:
   #-- Configure Git (needed by YCM)
   - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
