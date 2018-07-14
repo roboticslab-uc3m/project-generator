@@ -39,6 +39,8 @@ cp $SCRIPT_DIR/CMakeLists.txt .
 
 cp $SCRIPT_DIR/.gitignore .
 
+cp $SCRIPT_DIR/.travis.yml.generate .travis.yml
+
 cp $SCRIPT_DIR/cmake/CMakeLists.txt cmake
 
 cp $SCRIPT_DIR/cmake/templates/TEMPLATE_NAMEConfig.cmake.in "cmake/templates/"$PROJECT_NAME"Config.cmake.in"
