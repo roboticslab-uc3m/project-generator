@@ -32,7 +32,7 @@ mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 mkdir -p cmake/templates cmake/modules cmake/find-modules cmake/ycm-modules
 mkdir -p doc examples extern firmware libraries programs scripts share
-mkdir -p scripts/admin scripts/gnome scripts/package
+mkdir -p scripts/admin scripts/gnome scripts/package scripts/travis
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
@@ -74,6 +74,8 @@ cp $SCRIPT_DIR/scripts/admin/* scripts/admin
 cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
 
 cp $SCRIPT_DIR/scripts/package/* scripts/package
+
+cp $SCRIPT_DIR/scripts/travis/* scripts/travis
 
 find -type f -exec sed -i "s/TEMPLATE_NAME/$PROJECT_NAME/g" {} +
 find -type f -exec sed -i "s/TEMPLATE_CM_NAMESPACE/$PROJECT_CM_NAMESPACE/g" {} +
