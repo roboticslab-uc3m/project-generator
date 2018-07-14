@@ -36,6 +36,7 @@ echo Configuring CMake...
 cmake .. -G %1 ^
          -DENABLE_ExampleLibrary:BOOL=ON ^
          -DENABLE_exampleProgram:BOOL=ON ^
+         -DENABLE_tests:BOOL=ON ^
          -DTEMPLATE_NAME_DOXYGEN_HTML:BOOL=ON ^
          -DCPACK_BINARY_NSIS:BOOL=ON ^
  || (
@@ -48,6 +49,16 @@ cmake --build . --config Release || (
     echo Errors during build phase, exiting...
     exit /B 1
 )
+
+cd tests
+
+echo Running unit tests...
+ctest -V -C Release || (
+    echo Errors during unit testing phase, exiting...
+    exit /B 1
+)
+
+cd ..
 
 echo Generating documentation...
 cmake --build . --config Release --target dox || (
@@ -64,4 +75,3 @@ cmake --build . --config Release --target package || (
 echo Project built and packaged.
 
 pause >nul
-
