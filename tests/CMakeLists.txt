@@ -12,7 +12,8 @@ if(ENABLE_tests)
     if(ENABLE_ExampleLibrary)
         add_executable(testExampleLibrary testExampleLibrary.cpp)
 
-        target_link_libraries(testExampleLibrary ExampleLibrary
+        target_link_libraries(testExampleLibrary ROBOTICSLAB::ColorDebug
+                                                 ExampleLibrary
                                                  gtest_main)
 
         gtest_add_tests(testExampleLibrary "" AUTO)

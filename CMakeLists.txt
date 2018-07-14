@@ -20,7 +20,7 @@ find_package(YARP 3.0 QUIET)
 if(NOT YARP_FOUND)
     find_package(YARP 2.3.70 REQUIRED)
 endif()
-#find_package(COLOR_DEBUG REQUIRED)
+find_package(COLOR_DEBUG REQUIRED)
 
 # Soft dependencies.
 find_package(GTestSources 1.6.0 QUIET)
