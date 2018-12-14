@@ -30,13 +30,16 @@ cache:
 addons:
   apt:
     packages:
-    - doxygen # documentation
     - libgtest-dev # unit testing
+    - lcov # code coverage
 
 before_install:
   #-- Configure Git (needed by YCM)
   - if [ ! `git config --get user.email` ]; then `git config --global user.email 'user@example.com'`; fi
   - if [ ! `git config --get user.name` ]; then `git config --global user.name 'Travis CI'`; fi
+
+  #-- Code coverage
+  - if [ "$CXX" = "g++" ]; then gem install coveralls-lcov; fi
 
 install:
   #-- Install YCM
@@ -64,9 +67,18 @@ install:
     --repo-checkout develop
 
 before_script:
-  - cd $TRAVIS_BUILD_DIR
-  - ./project-generator.sh < test_program_answers.txt
-  - cd $(tail -n 1 test_program_answers.txt)
+  - mkdir -p "$TRAVIS_BUILD_DIR/build" && cd "$_"
+  - cmake .. -DCMAKE_INSTALL_PREFIX="$PWD/install" -DENABLE_coverage:BOOL=ON
+  - make install
+  - export LD_LIBRARY_PATH=$PWD/install/lib:$LD_LIBRARY_PATH
+  - export YARP_DATA_DIRS=$PWD/install/share/TEMPLATE_LOWER:$YARP_DATA_DIRS
 
 script:
-  - ./scripts/package/make_package.sh
+  - #(cd tests && ctest -V) # uncomment this and delete next line once set
+  - echo "No unit tests available"
+
+after_success:
+  #-- Code coverage
+  - if [ "$CXX" = "g++" ]; then source "$TRAVIS_BUILD_DIR/scripts/travis/coverage.sh"; fi
+
+  - make uninstall

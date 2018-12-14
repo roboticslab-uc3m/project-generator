@@ -1,11 +1,20 @@
-### options: cpp libraries
+include(CMakeDependentOption)
+
+# options: cpp libraries
 option(ENABLE_ExampleLibrary "Choose if you want to compile ExampleLibrary" TRUE)
 
-### options: cpp programs
+# options: cpp programs
 option(ENABLE_exampleProgram "Choose if you want to compile exampleProgram" TRUE)
 
-### options: force default
+# options: force default
 option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE)
+
+# options: unit testing
+cmake_dependent_option(ENABLE_tests "Enable/disable unit tests" ON
+                       GTestSources_FOUND OFF)
+
+# options: code coverage
+option(ENABLE_coverage "Choose if you want to enable coverage collection" OFF)
 
 # Register features.
 add_feature_info(ExampleLibrary ENABLE_ExampleLibrary "Fancy example library.")

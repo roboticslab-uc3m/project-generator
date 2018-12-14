@@ -23,6 +23,7 @@ cd build
 echo "Configuring CMake..."
 cmake .. -DENABLE_ExampleLibrary:BOOL=ON \
          -DENABLE_exampleProgram:BOOL=ON \
+         -DENABLE_tests:BOOL=ON \
          -DTEMPLATE_NAME_DOXYGEN_HTML:BOOL=ON \
          -DCPACK_BINARY_DEB:BOOL=ON \
 || {
@@ -33,6 +34,12 @@ cmake .. -DENABLE_ExampleLibrary:BOOL=ON \
 echo "Building project..."
 make -j$(nproc) || {
     echo "Errors during build phase, exiting..."
+    exit 1
+}
+
+echo "Running unit tests"
+(cd tests && ctest -V) || {
+    echo "Unit tests failed, exiting..."
     exit 1
 }
 
@@ -49,4 +56,3 @@ make package || {
 }
 
 echo "Project built and packaged."
-

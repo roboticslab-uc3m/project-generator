@@ -2,12 +2,16 @@
 
 #include "ExampleProgram.hpp"
 
+#include <ColorDebug.h>
+
 namespace roboticslab
 {
 
 /************************************************************************/
 
-bool ExampleProgram::configure(yarp::os::ResourceFinder &rf) {
+bool ExampleProgram::configure(yarp::os::ResourceFinder &rf)
+{
+    CD_DEBUG("%s\n", rf.toString().c_str());
 
     printf("--------------------------------------------------------------\n");
     if (rf.check("help")) {
@@ -22,19 +26,21 @@ bool ExampleProgram::configure(yarp::os::ResourceFinder &rf) {
 }
 
 /************************************************************************/
-double ExampleProgram::getPeriod() {
+double ExampleProgram::getPeriod()
+{
     return 2.0;  // Fixed, in seconds, the slow thread that calls updateModule below
 }
 
 /************************************************************************/
-bool ExampleProgram::updateModule() {
-    //printf("StateMachine in state [%d]. ExampleProgram alive...\n", stateMachine.getMachineState());
+bool ExampleProgram::updateModule()
+{
     return true;
 }
 
 /************************************************************************/
 
-bool ExampleProgram::interruptModule() {
+bool ExampleProgram::interruptModule()
+{
     return true;
 }
 
