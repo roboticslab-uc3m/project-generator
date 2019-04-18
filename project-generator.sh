@@ -49,8 +49,6 @@ cp $SCRIPT_DIR/cmake/templates/TEMPLATE_NAMEConfig.cmake.in "cmake/templates/"$P
 
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDescribe.cmake "cmake/"$PROJECT_NAME"Describe.cmake"
 
-cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDoc.cmake "cmake/"$PROJECT_NAME"Doc.cmake"
-
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEOptions.cmake "cmake/"$PROJECT_NAME"Options.cmake"
 
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEPackage.cmake "cmake/"$PROJECT_NAME"Package.cmake"

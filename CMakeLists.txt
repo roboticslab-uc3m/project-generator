@@ -49,9 +49,6 @@ add_subdirectory(doc)
 # Output configuration files.
 include(TEMPLATE_NAMEDescribe)
 
-# Create target for documentation generation.
-include(TEMPLATE_NAMEDoc)
-
 # Invoke CPack from here.
 include(TEMPLATE_NAMEPackage)
 
