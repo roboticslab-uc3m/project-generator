@@ -5,12 +5,10 @@
 # crontab -e
 # 30 2 * * * /your/command
 
+path="$HOME/TEMPLATE_LOWER"
 echo "Update TEMPLATE_LOWER..."
-cd $HOME/TEMPLATE_LOWER
-git pull
+git -C "$path" pull
 echo "Doxy TEMPLATE_LOWER..."
-cd doc
-rm -r html
-/usr/bin/doxygen
-cd ../..
-
+path="$path/doc/build"
+mkdir -p "$path"
+make -C "$path" clean && make -C "$path" dox

@@ -1,6 +1,5 @@
-
 /**
-@brief The main, catch-all namespace for Roboticslab UC3M.
+ * @brief The main, catch-all namespace for Roboticslab UC3M.
  */
 namespace roboticslab {}
 
@@ -29,5 +28,8 @@ namespace roboticslab {}
  * @brief TEMPLATE_LOWER examples.
  */
 
-
-
+/**
+ * \defgroup TEMPLATE_LOWER_tests TEMPLATE_LOWER Tests
+ *
+ * @brief TEMPLATE_LOWER tests.
+ */
