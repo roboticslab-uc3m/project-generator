@@ -30,7 +30,7 @@ fi
 echo Creating folder structure for $PROJECT_LOWER \($PROJECT_NAME\)  in \"$INSTALL_DIR\"...
 mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
-mkdir -p cmake/templates cmake/modules cmake/find-modules cmake/ycm-modules
+mkdir -p cmake/modules cmake/find-modules cmake/ycm-modules
 mkdir -p doc examples extern firmware libraries programs scripts share tests
 mkdir -p scripts/admin scripts/gnome scripts/package scripts/travis
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
@@ -44,8 +44,6 @@ cp $SCRIPT_DIR/.travis.yml.generate .travis.yml
 cp $SCRIPT_DIR/cmake/CMakeLists.txt cmake
 
 cp $SCRIPT_DIR/cmake/find-modules/* cmake/find-modules
-
-cp $SCRIPT_DIR/cmake/templates/TEMPLATE_NAMEConfig.cmake.in "cmake/templates/"$PROJECT_NAME"Config.cmake.in"
 
 cp $SCRIPT_DIR/cmake/TEMPLATE_NAMEDescribe.cmake "cmake/"$PROJECT_NAME"Describe.cmake"
 
