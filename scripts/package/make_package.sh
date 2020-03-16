@@ -24,7 +24,6 @@ echo "Configuring CMake..."
 cmake .. -DENABLE_ExampleLibrary:BOOL=ON \
          -DENABLE_exampleProgram:BOOL=ON \
          -DENABLE_tests:BOOL=ON \
-         -DTEMPLATE_NAME_DOXYGEN_HTML:BOOL=ON \
          -DCPACK_BINARY_DEB:BOOL=ON \
 || {
     echo "Errors during CMake configuration, exiting..."
