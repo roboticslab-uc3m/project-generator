@@ -10,15 +10,13 @@ namespace roboticslab
  * @ingroup exampleLibrary
  *
  * @brief exampleLibrary
- *
  */
-class ExampleLibrary {
-    public:
-
-    protected:
-
+class ExampleLibrary
+{
+public:
+protected:
 };
 
-}  // namespace roboticslab
+} // namespace roboticslab
 
-#endif  // __EXAMPLE_LIBRARY_HPP__
+#endif // __EXAMPLE_LIBRARY_HPP__
