@@ -1,7 +1,6 @@
 // -*- mode:C++; tab-width:4; c-basic-offset:4; indent-tabs-mode:nil -*-
 
 /**
- *
  * @ingroup TEMPLATE_LOWER_programs
  * \defgroup exampleProgram
  *
@@ -19,15 +18,17 @@
  * <hr>
  *
  * This file can be edited at exampleProgram
- *
  */
 
-#include <yarp/os/all.h>
+#include <cstdio>
+
+#include <yarp/os/Network.h>
+#include <yarp/os/ResourceFinder.h>
 
 #include "ExampleProgram.hpp"
 
-int main(int argc, char **argv) {
-
+int main(int argc, char ** argv)
+{
     yarp::os::ResourceFinder rf;
     rf.setVerbose(true);
     rf.setDefaultContext("exampleProgram");
@@ -35,18 +36,23 @@ int main(int argc, char **argv) {
     rf.configure(argc, argv);
 
     roboticslab::ExampleProgram mod;
-    if(rf.check("help")) {
+
+    if (rf.check("help"))
+    {
         return mod.runModule(rf);
     }
 
-    printf("Run \"%s --help\" for options.\n",argv[0]);
-    printf("%s checking for yarp network... ",argv[0]);
-    fflush(stdout);
+    std::printf("Run \"%s --help\" for options.\n", argv[0]);
+    std::printf("%s checking for yarp network... ", argv[0]);
+    std::fflush(stdout);
+
     yarp::os::Network yarp;
-    if (!yarp.checkNetwork()) {
-        fprintf(stderr,"[fail]\n%s found no yarp network (try running \"yarpserver &\"), bye!\n",argv[0]);
+
+    if (!yarp.checkNetwork())
+    {
+        std::fprintf(stderr, "[fail]\n%s found no yarp network (try running \"yarpserver &\"), bye!\n", argv[0]);
         return 1;
-    } else printf("[ok]\n");
+    } else std::printf("[ok]\n");
 
     return mod.runModule(rf);
 }
