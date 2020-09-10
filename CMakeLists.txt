@@ -2,11 +2,11 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Start a project. Set the LANGUAGES option according to your
 # needs, e.g. 'C', 'CXX', 'NONE'.
-project(TEMPLATE_NAME LANGUAGES CXX)
+project(TEMPLATE_NAME VERSION 0.1.0 LANGUAGES CXX)
 
 # Set module path.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
@@ -14,15 +14,12 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
                               ${CMAKE_SOURCE_DIR}/cmake/find-modules)
 
 # Hard dependencies.
-find_package(YCM 0.8 REQUIRED)
-# https://github.com/roboticslab-uc3m/questions-and-answers/issues/65
-find_package(YARP 3.0 QUIET)
-if(NOT YARP_FOUND)
-    find_package(YARP 2.3.70 REQUIRED)
-endif()
+find_package(YCM 0.11 REQUIRED)
+find_package(YARP 3.2 REQUIRED COMPONENTS OS)
 find_package(COLOR_DEBUG REQUIRED)
 
 # Soft dependencies.
+find_package(Doxygen QUIET)
 find_package(GTestSources 1.6.0 QUIET)
 
 # Add WITH_PLUGINS if this projects exports YARP devices.
@@ -41,14 +38,12 @@ include(TEMPLATE_NAMEOptions)
 add_subdirectory(cmake)
 add_subdirectory(libraries)
 add_subdirectory(programs)
-add_subdirectory(share)
 add_subdirectory(tests)
+add_subdirectory(share)
+add_subdirectory(doc)
 
 # Output configuration files.
 include(TEMPLATE_NAMEDescribe)
-
-# Create target for documentation generation.
-include(TEMPLATE_NAMEDoc)
 
 # Invoke CPack from here.
 include(TEMPLATE_NAMEPackage)

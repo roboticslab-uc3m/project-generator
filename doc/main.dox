@@ -10,6 +10,7 @@ Other internal links of interest:
  \li \ref TEMPLATE_LOWER_libraries
  \li \ref TEMPLATE_LOWER_applications
  \li \ref TEMPLATE_LOWER_examples
+ \li \ref TEMPLATE_LOWER_tests
 
 Even more internal links of interest:
  \li <a class=el href="http://robots.uc3m.es/dox-kinematics-dynamics/index.html">kinematics-dynamics</a>
@@ -25,4 +26,3 @@ External links (related projects):
 This page can be edited at TEMPLATE_LOWER/doc/main.dox.
 
 */
-

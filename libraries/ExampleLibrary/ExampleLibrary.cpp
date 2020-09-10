@@ -13,4 +13,4 @@ namespace roboticslab
 
 /************************************************************************/
 
-}  // namespace roboticslab
+} // namespace roboticslab
