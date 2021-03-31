@@ -67,8 +67,6 @@ cp $SCRIPT_DIR/programs/exampleProgram/* programs/exampleProgram
 
 cp $SCRIPT_DIR/share/* share
 
-cp $SCRIPT_DIR/scripts/admin/* scripts/admin
-
 cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
 
 cp $SCRIPT_DIR/scripts/package/* scripts/package
