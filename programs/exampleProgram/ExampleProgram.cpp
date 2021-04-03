@@ -4,7 +4,7 @@
 
 #include <cstdio>
 
-#include <ColorDebug.h>
+#include <yarp/os/LogStream.h>
 
 using namespace roboticslab;
 
@@ -12,7 +12,7 @@ using namespace roboticslab;
 
 bool ExampleProgram::configure(yarp::os::ResourceFinder & rf)
 {
-    CD_DEBUG("%s\n", rf.toString().c_str());
+    yDebug() << "ExampleProgram config:" << rf.toString();
 
     std::printf("--------------------------------------------------------------\n");
 

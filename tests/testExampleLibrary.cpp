@@ -2,8 +2,6 @@
 
 #include "ExampleLibrary.hpp"
 
-#include <ColorDebug.h>
-
 namespace roboticslab
 {
 

@@ -14,8 +14,7 @@ add_library(${KEYWORD} SHARED ExampleLibrary.cpp
 set_target_properties(${KEYWORD} PROPERTIES PUBLIC_HEADER "ExampleLibrary.hpp")
 
 # Link external libraries.
-target_link_libraries(${KEYWORD} PUBLIC YARP::YARP_OS
-                                 PRIVATE ROBOTICSLAB::ColorDebug)
+target_link_libraries(${KEYWORD} PUBLIC YARP::YARP_os)
 
 # Define include paths.
 target_include_directories(${KEYWORD} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

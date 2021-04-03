@@ -15,9 +15,8 @@ add_executable(${KEYWORD} main.cpp
                           ExampleProgram.hpp)
 
 # Link external libraries.
-target_link_libraries(${KEYWORD} YARP::YARP_OS
+target_link_libraries(${KEYWORD} YARP::YARP_os
                                  YARP::YARP_init
-                                 ROBOTICSLAB::ColorDebug
                                  ${_exported_targets})
 
 # Create installation rule.
