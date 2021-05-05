@@ -32,14 +32,12 @@ mkdir -p $INSTALL_DIR
 cd $INSTALL_DIR
 mkdir -p cmake/modules cmake/find-modules cmake/ycm-modules
 mkdir -p doc examples extern firmware libraries programs scripts share tests
-mkdir -p scripts/admin scripts/gnome scripts/package scripts/travis
+mkdir -p scripts/admin scripts/gnome scripts/package
 mkdir -p libraries/ExampleLibrary programs/exampleProgram
 
 cp $SCRIPT_DIR/CMakeLists.txt .
 
 cp $SCRIPT_DIR/.gitignore .
-
-cp $SCRIPT_DIR/.travis.yml.generate .travis.yml
 
 cp $SCRIPT_DIR/cmake/CMakeLists.txt cmake
 
@@ -70,8 +68,6 @@ cp $SCRIPT_DIR/share/* share
 cp $SCRIPT_DIR/scripts/gnome/TEMPLATE_LOWER.desktop "scripts/gnome/"$PROJECT_LOWER".desktop"
 
 cp $SCRIPT_DIR/scripts/package/* scripts/package
-
-cp $SCRIPT_DIR/scripts/travis/* scripts/travis
 
 cp $SCRIPT_DIR/tests/* tests
 
