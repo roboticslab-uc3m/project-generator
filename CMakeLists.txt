@@ -2,7 +2,7 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
-cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12)
 
 # Start a project. Set the LANGUAGES option according to your
 # needs, e.g. 'C', 'CXX', 'NONE'.
@@ -19,7 +19,7 @@ find_package(YARP 3.3 REQUIRED COMPONENTS os)
 
 # Soft dependencies.
 find_package(Doxygen QUIET)
-find_package(GTestSources 1.6.0 QUIET)
+find_package(GTestSources 1.8 QUIET)
 
 # Add WITH_PLUGINS if this projects exports YARP devices.
 yarp_configure_external_installation(TEMPLATE_LOWER)
@@ -32,6 +32,9 @@ include(TEMPLATE_NAMESystem)
 
 # Setup build options.
 include(TEMPLATE_NAMEOptions)
+
+# Acknowledge this is a CTest-friendly project.
+enable_testing()
 
 # Define and enter subdirectories.
 add_subdirectory(cmake)
