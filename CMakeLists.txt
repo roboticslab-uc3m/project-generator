@@ -2,7 +2,7 @@
 # Authors: TEMPLATE_AUTHOR
 # CopyPolicy: Released under the terms of the TEMPLATE_LICENSE
 
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.16)
 
 # Start a project. Set the LANGUAGES option according to your
 # needs, e.g. 'C', 'CXX', 'NONE'.
@@ -15,7 +15,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake
 
 # Hard dependencies.
 find_package(YCM 0.11 REQUIRED)
-find_package(YARP 3.3 REQUIRED COMPONENTS os)
+find_package(YARP 3.8 REQUIRED COMPONENTS os)
 
 # Soft dependencies.
 find_package(Doxygen QUIET)

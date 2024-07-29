@@ -13,9 +13,6 @@ option(ENABLE_exampleExtraOption "Enable/disable option exampleExtraOption" TRUE
 cmake_dependent_option(ENABLE_tests "Enable/disable unit tests" ON
                        GTestSources_FOUND OFF)
 
-# options: code coverage
-option(ENABLE_coverage "Choose if you want to enable coverage collection" OFF)
-
 # Register features.
 add_feature_info(ExampleLibrary ENABLE_ExampleLibrary "Fancy example library.")
 add_feature_info(exampleProgram ENABLE_exampleProgram "Fancy example program.")
